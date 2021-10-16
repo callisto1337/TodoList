@@ -25,20 +25,25 @@ namespace TodoList
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             if (lstTodoList.Items.Contains(txtName.Text))
             {
-                MessageBox.Show("Такая заметка уже существует!");
+                string text = string.Format("Заметка \"{0}\" уже существует!", txtName.Text);
+
+                MessageBox.Show(text);
             }
             else if (!string.IsNullOrWhiteSpace(txtName.Text))
             {
                 lstTodoList.Items.Add(txtName.Text);
                 txtName.Clear();
+            } else
+            {
+                txtName.Clear();
             }
         }
 
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
             if (lstTodoList.SelectedIndex >= 0)
             {
